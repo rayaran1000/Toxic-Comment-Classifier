@@ -1,0 +1,11 @@
+numpy
+pandas
+keras
+scikit-learn
+matplotlib
+transformers
+transformers[sentencepiece]
+datasets
+tqdm
+nltk
+-e.
