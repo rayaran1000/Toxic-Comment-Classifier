@@ -2,6 +2,7 @@ from ToxicCommentClassifier.constants import *
 from ToxicCommentClassifier.utils.common import read_yaml,create_directories
 from ToxicCommentClassifier.entity import DataIngestionConfig
 from ToxicCommentClassifier.entity import DataValidationConfig
+from ToxicCommentClassifier.entity import DataTransformationConfig
 
 class ConfigurationManager:
     def __init__(
@@ -40,3 +41,16 @@ class ConfigurationManager:
         )
 
         return data_validation_config
+    
+    def get_data_transformation_config(self) -> DataTransformationConfig: # Here we are using the entity to specify the return type classes to make sure proper output is returned
+        config= self.config.data_transformation # Calling the data_validation dictionary created in config.yaml file
+
+        create_directories([config.root_dir]) # Creating a directory using the root directory
+
+        data_transformation_config = DataTransformationConfig( # Extracting the values from the config.yaml to here inside data_ingestion_config
+            root_dir=config.root_dir,
+            data_path=config.data_path,
+            tokenizer_name=config.tokenizer_name
+        )
+
+        return data_transformation_config    
