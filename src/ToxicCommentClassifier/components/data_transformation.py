@@ -10,7 +10,6 @@ from ToxicCommentClassifier.entity import DataTransformationConfig
 class DataTransformation:
     def __init__(self,config:DataTransformationConfig): # It will take the configuration from DataIngestionConfig defined earlier , which will in turn use Configuration Manager to take data from config.yaml
         self.config = config
-        self.tokenizer = AutoTokenizer.from_pretrained(self.config.tokenizer_name)
 
     def load_dataset(self): # Used for tokenization of input text field
 
