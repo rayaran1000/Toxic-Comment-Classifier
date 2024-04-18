@@ -1,6 +1,5 @@
 import os
 import pickle
-import torch
 import pandas as pd
 from ToxicCommentClassifier.logging import logger
 from transformers import AutoTokenizer
@@ -34,33 +33,12 @@ class DataTransformation:
         
         dataset_validation['label'] = dataset_validation[label_columns].astype('float32').apply(list, axis=1)
         dataset_validation = dataset_validation[['comment_text','label']]
-        logger.info("Dataset Label Transformation done")
+        logger.info("Data Transformation done")
 
-        return dataset_train,dataset_validation
+        #Saving the transformed datasets
+        train_transformed_path = os.path.join(self.config.root_dir , 'train_transformed')
+        validation_transformed_path = os.path.join(self.config.root_dir , 'validation_transformed')
 
-    def tokenize(self,example_batch):
-
-        encodings = self.tokenizer(example_batch['comment_text'].to_list(),max_length=1024,padding=True,truncation=True)
-
-        label_tensors = torch.tensor(example_batch['label'])
-
-        logger.info("Dataset Tokenization done")
-
-        return {'input_ids': encodings['input_ids'],
-                'attention_mask': encodings['attention_mask'],
-                'labels': label_tensors}
-
-    def convert(self):
-        train_dataset , validation_dataset = self.transform()
-
-        #Tokenizing the datasets
-        train_dataset_tokenized = self.tokenize(train_dataset)
-        validation_dataset_tokenized = self.tokenize(validation_dataset)
-
-        #Saving the tokenized datasets
-        train_tokenized_path = os.path.join(self.config.root_dir , 'train_tokenized.pt')
-        validation_tokenized_path = os.path.join(self.config.root_dir , 'validation_tokenized.pt')
-
-        torch.save(train_dataset_tokenized, train_tokenized_path)
-        torch.save(validation_dataset_tokenized, validation_tokenized_path)
-        logger.info("Dataset Transformation done")
+        dataset_train.to_csv(train_transformed_path,index=False)
+        dataset_validation.to_csv(validation_transformed_path,index=False)
+         
