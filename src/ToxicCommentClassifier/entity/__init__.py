@@ -18,4 +18,19 @@ class DataValidationConfig: # defined for the config components present in artif
 class DataTransformationConfig: # defined for the config components present in artifacts for data transformation
     root_dir : Path 
     data_path : Path
-    tokenizer_name : Path
+
+@dataclass(frozen=True)
+class ModelTrainerConfig: # defined for the config components present in artifacts for model training
+    root_dir : Path 
+    data_path_train : Path
+    data_path_validation : Path
+    tokenizer_ckpt : Path
+    model_ckpt : Path
+    num_train_epochs: int
+    warmup_steps: int
+    per_device_train_batch_size: int
+    per_device_eval_batch_size: int
+    weight_decay: float
+    eval_steps: int
+    save_steps: int
+    save_total_limit: int

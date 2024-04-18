@@ -3,6 +3,7 @@ from ToxicCommentClassifier.utils.common import read_yaml,create_directories
 from ToxicCommentClassifier.entity import DataIngestionConfig
 from ToxicCommentClassifier.entity import DataValidationConfig
 from ToxicCommentClassifier.entity import DataTransformationConfig
+from ToxicCommentClassifier.entity import ModelTrainerConfig
 
 class ConfigurationManager:
     def __init__(
@@ -49,8 +50,32 @@ class ConfigurationManager:
 
         data_transformation_config = DataTransformationConfig( # Extracting the values from the config.yaml to here inside data_ingestion_config
             root_dir=config.root_dir,
-            data_path=config.data_path,
-            tokenizer_name=config.tokenizer_name
+            data_path=config.data_path
         )
 
         return data_transformation_config    
+    
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+
+        config= self.config.model_trainer # Calling the model_trainer dictionary created in config.yaml file
+        params=self.params.TrainingArguments # Calling the TrainingArguments dictionary in params.yaml file
+
+        create_directories([config.root_dir]) # Creating a directory using the root directory
+
+        model_trainer_config = ModelTrainerConfig( # Extracting the values from the config.yaml to here inside data_ingestion_config
+            root_dir=config.root_dir,
+            data_path_train=config.data_path_train,
+            data_path_validation=config.data_path_validation,
+            tokenizer_ckpt=config.tokenizer_ckpt,
+            model_ckpt=config.model_ckpt,
+            num_train_epochs=params.num_train_epochs,
+            warmup_steps=params.warmup_steps,
+            per_device_train_batch_size=params.per_device_train_batch_size,
+            per_device_eval_batch_size= params.per_device_eval_batch_size,
+            weight_decay=params.weight_decay,
+            eval_steps=params.eval_steps,
+            save_steps=params.save_steps,
+            save_total_limit=params.save_total_limit,
+        )
+
+        return model_trainer_config
