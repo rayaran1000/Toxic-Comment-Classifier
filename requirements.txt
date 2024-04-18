@@ -5,6 +5,7 @@ scikit-learn
 matplotlib
 transformers
 transformers[sentencepiece]
+accelerate
 datasets
 tqdm
 py7zr

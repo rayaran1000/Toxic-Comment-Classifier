@@ -15,4 +15,10 @@ data_validation:
 data_transformation:
   root_dir: artifacts/data_transformation
   data_path: artifacts/data_ingestion/data
-  tokenizer_name: distilbert/distilbert-base-uncased
+
+model_trainer:
+  root_dir: artifacts/model_trainer
+  data_path_train: artifacts/data_transformation/train_transformed
+  data_path_validation: artifacts/data_transformation/validation_transformed
+  tokenizer_ckpt: distilbert/distilbert-base-uncased
+  model_ckpt: distilbert/distilbert-base-uncased
