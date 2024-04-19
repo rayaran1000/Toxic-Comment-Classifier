@@ -4,6 +4,7 @@ from ToxicCommentClassifier.entity import DataIngestionConfig
 from ToxicCommentClassifier.entity import DataValidationConfig
 from ToxicCommentClassifier.entity import DataTransformationConfig
 from ToxicCommentClassifier.entity import ModelTrainerConfig
+from ToxicCommentClassifier.entity import PredictionConfig
 
 class ConfigurationManager:
     def __init__(
@@ -48,7 +49,7 @@ class ConfigurationManager:
 
         create_directories([config.root_dir]) # Creating a directory using the root directory
 
-        data_transformation_config = DataTransformationConfig( # Extracting the values from the config.yaml to here inside data_ingestion_config
+        data_transformation_config = DataTransformationConfig( # Extracting the values from the config.yaml to here inside data_TransformationConfig
             root_dir=config.root_dir,
             data_path=config.data_path
         )
@@ -62,7 +63,7 @@ class ConfigurationManager:
 
         create_directories([config.root_dir]) # Creating a directory using the root directory
 
-        model_trainer_config = ModelTrainerConfig( # Extracting the values from the config.yaml to here inside data_ingestion_config
+        model_trainer_config = ModelTrainerConfig( # Extracting the values from the config.yaml to here inside model_trainer_config
             root_dir=config.root_dir,
             data_path_train=config.data_path_train,
             data_path_validation=config.data_path_validation,
@@ -79,3 +80,17 @@ class ConfigurationManager:
         )
 
         return model_trainer_config
+    
+    def get_prediction_pipeline_config(self) -> PredictionConfig:
+
+        config= self.config.prediction_pipeline # Calling the predictionconfig dictionary created in config.yaml file
+
+        create_directories([config.root_dir]) # Creating a directory using the root directory
+
+        prediction_config = PredictionConfig( # Extracting the values from the config.yaml to here inside pipeline prediction config
+            finetuned_model_path=config.finetuned_model_path,
+            tokenizer_ckpt=config.tokenizer_ckpt
+        )
+
+        return prediction_config
+

@@ -1,6 +1,5 @@
 artifacts_root: artifacts
 
-
 data_ingestion:
   root_dir: artifacts/data_ingestion
   source_URL: Arsive/toxicity_classification_jigsaw
@@ -22,3 +21,8 @@ model_trainer:
   data_path_validation: artifacts/data_transformation/validation_transformed
   tokenizer_ckpt: distilbert/distilbert-base-uncased
   model_ckpt: distilbert/distilbert-base-uncased
+
+prediction_pipeline:
+  root_dir: artifacts/prediction_pipeline
+  finetuned_model_path: artifacts\model_trainer\distilbert_full_finetuning_toxic_comments
+  tokenizer_ckpt: distilbert/distilbert-base-uncased 

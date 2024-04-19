@@ -34,3 +34,8 @@ class ModelTrainerConfig: # defined for the config components present in artifac
     eval_steps: int
     save_steps: int
     save_total_limit: int
+
+@dataclass(frozen=True)
+class PredictionConfig: # defined for the config components present in artifacts for prediction pipeline
+    finetuned_model_path: Path
+    tokenizer_ckpt: Path
