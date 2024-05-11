@@ -118,7 +118,7 @@ Email: aranya.ray1998@gmail.com
 
 4. Setup Github secrets completed.
 
-![Github actions](https://github.com/rayaran1000/Toxic-Comment-Classifier/assets/122597408/7be05650-8438-468d-9c66-d64064927d23)
+![Github actions](https://github.com/rayaran1000/Toxic-Comment-Classifier/assets/122597408/ff564e43-d674-460a-acab-f973c04f526b)
 
 ## Dataset and Model Specifications
 
