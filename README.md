@@ -105,9 +105,15 @@ Email: aranya.ray1998@gmail.com
 # Deployment
 
 1. Created IAM user for deployment.
+![IAM User creation](https://github.com/rayaran1000/Toxic-Comment-Classifier/assets/122597408/443b4b2d-bce2-45c7-8b12-5344a8236a81)
 2. Created ECR repo to store/save docker image.
+![ECR Repo](https://github.com/rayaran1000/Toxic-Comment-Classifier/assets/122597408/de1e2441-8f88-4d87-a46a-e854fbac948d)
+
 3. Created EC2 instance (Ubuntu) and installed docker in EC2 Machine.
-3. Setup Github secrets completed.
+![EC2 Instance](https://github.com/rayaran1000/Toxic-Comment-Classifier/assets/122597408/0c51549f-ec00-49e9-a056-0bd1d46e727f)
+
+4. Setup Github secrets completed.
+![Github actions](https://github.com/rayaran1000/Toxic-Comment-Classifier/assets/122597408/7be05650-8438-468d-9c66-d64064927d23)
 
 ## Dataset and Model Specifications
 
