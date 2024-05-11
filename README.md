@@ -107,6 +107,7 @@ Email: aranya.ray1998@gmail.com
 1. Created IAM user for deployment.
 
 ![IAM User creation](https://github.com/rayaran1000/Toxic-Comment-Classifier/assets/122597408/443b4b2d-bce2-45c7-8b12-5344a8236a81)
+
 2. Created ECR repo to store/save docker image.
 
 ![ECR Repo](https://github.com/rayaran1000/Toxic-Comment-Classifier/assets/122597408/de1e2441-8f88-4d87-a46a-e854fbac948d)
